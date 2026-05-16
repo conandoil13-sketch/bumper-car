@@ -17,8 +17,8 @@ const config = {
     height: 844
   },
   render: {
-    pixelArt: true,
-    antialias: false
+    pixelArt: false,
+    antialias: true
   },
   scene: [BootScene, MenuScene, GameScene, ResultScene]
 };

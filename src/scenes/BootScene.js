@@ -16,6 +16,11 @@ export default class BootScene extends Phaser.Scene {
   create() {
     PixelArtFactory.create(this);
     VehicleFactory.create(this);
+    CHARACTERS.forEach((character) => {
+      if (this.textures.exists(character.faceKey)) {
+        this.textures.get(character.faceKey).setFilter(Phaser.Textures.FilterMode.LINEAR);
+      }
+    });
     this.scene.start("MenuScene");
   }
 }

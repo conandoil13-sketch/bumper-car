@@ -32,6 +32,7 @@ export default class VehicleFactory {
     ctx.fillStyle = "rgba(255,255,255,0.35)";
     ctx.fillRect(14, 20, 6, 48);
     texture.refresh();
+    texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
   }
 
   static addVehicle(scene, x, y, character, options = {}) {
@@ -42,8 +43,8 @@ export default class VehicleFactory {
 
     if (options.showFace !== false) {
       const faceKey = scene.textures.exists(character.faceKey) ? character.faceKey : "face-fallback";
-      const face = scene.add.image(0, -18, faceKey).setDisplaySize(34, 34);
-      const frame = scene.add.circle(0, -18, 20, 0x0f172a).setStrokeStyle(3, 0xf8fafc);
+      const face = scene.add.image(0, -18, faceKey).setDisplaySize(38, 38);
+      const frame = scene.add.circle(0, -18, 22, 0x0f172a).setStrokeStyle(3, 0xf8fafc);
       const maskShape = scene.add.graphics();
       const mask = maskShape.createGeometryMask();
       face.setMask(mask);
@@ -54,7 +55,7 @@ export default class VehicleFactory {
         const offset = new Phaser.Math.Vector2(0, -18).rotate(container.rotation);
         maskShape.clear();
         maskShape.fillStyle(0xffffff);
-        maskShape.fillCircle(container.x + offset.x, container.y + offset.y, 17);
+        maskShape.fillCircle(container.x + offset.x, container.y + offset.y, 19);
       };
       container.updateFaceMask();
     } else {

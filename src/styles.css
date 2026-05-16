@@ -32,11 +32,9 @@ body {
   height: 100dvh;
   max-width: 520px;
   max-height: 940px;
-  image-rendering: pixelated;
 }
 
 canvas {
   display: block;
-  image-rendering: pixelated;
   touch-action: none;
 }

@@ -22,7 +22,7 @@ export default class PixelArtFactory {
     ctx.fillRect(8, 8, width - 16, 8);
     ctx.fillStyle = "rgba(0,0,0,0.22)";
     ctx.fillRect(8, height - 14, width - 16, 6);
-    texture.refresh();
+    this.refreshPixelTexture(texture);
   }
 
   static createHeart(scene, key) {
@@ -41,7 +41,7 @@ export default class PixelArtFactory {
     ctx.fillRect(4, 8, 16, 5);
     ctx.fillRect(7, 13, 10, 4);
     ctx.fillRect(10, 17, 4, 3);
-    texture.refresh();
+    this.refreshPixelTexture(texture);
   }
 
   static createBoostButton(scene, key) {
@@ -61,7 +61,7 @@ export default class PixelArtFactory {
     ctx.fillRect(30, 42, 28, 8);
     ctx.fillRect(26, 50, 8, 10);
     ctx.fillRect(54, 50, 8, 10);
-    texture.refresh();
+    this.refreshPixelTexture(texture);
   }
 
   static createJoystick(scene, baseKey, knobKey) {
@@ -75,7 +75,7 @@ export default class PixelArtFactory {
     baseCtx.strokeStyle = "rgba(248, 250, 252, 0.48)";
     baseCtx.lineWidth = 4;
     baseCtx.strokeRect(22, 22, 76, 76);
-    base.refresh();
+    this.refreshPixelTexture(base);
 
     const knob = scene.textures.createCanvas(knobKey, 48, 48);
     const knobCtx = knob.getContext();
@@ -88,7 +88,7 @@ export default class PixelArtFactory {
     knobCtx.fillRect(12, 8, 24, 8);
     knobCtx.fillRect(8, 16, 32, 16);
     knobCtx.fillRect(12, 32, 24, 8);
-    knob.refresh();
+    this.refreshPixelTexture(knob);
   }
 
   static createCollisionBurst(scene, key) {
@@ -104,7 +104,7 @@ export default class PixelArtFactory {
     ctx.fillRect(14, 14, 20, 20);
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(20, 20, 8, 8);
-    texture.refresh();
+    this.refreshPixelTexture(texture);
   }
 
   static createBoostTrail(scene, key) {
@@ -118,7 +118,7 @@ export default class PixelArtFactory {
     ctx.fillStyle = "rgba(254, 240, 138, 0.86)";
     ctx.fillRect(8, 10, 18, 6);
     ctx.fillRect(4, 24, 22, 6);
-    texture.refresh();
+    this.refreshPixelTexture(texture);
   }
 
   static createFaceFallback(scene, key) {
@@ -135,6 +135,11 @@ export default class PixelArtFactory {
     ctx.fillRect(34, 48, 8, 8);
     ctx.fillRect(54, 48, 8, 8);
     ctx.fillRect(40, 64, 16, 4);
+    this.refreshPixelTexture(texture);
+  }
+
+  static refreshPixelTexture(texture) {
     texture.refresh();
+    texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
   }
 }
